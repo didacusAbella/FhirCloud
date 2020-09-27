@@ -1,20 +1,25 @@
 version: '3.0'
 services:
   web:
+    container_name: fhirclient
     build:
       context: .
       dockerfile: ./Containers/Client.Dockerfile
     ports:
       - "8080:8080"
   server:
+    container_name: fhirserver
     build:
       context: .
       dockerfile: ./Containers/Server.Dockerfile
     ports:
-      - "4000:4000"
+      - "4000:8080"
   database:
+    container_name: fhirdatabase
     build:
       context: .
       dockerfile: ./Containers/Database.Dockerfile
     ports:
       - "1433:1433"
+    volumes:
+      - ./backup:/tmp

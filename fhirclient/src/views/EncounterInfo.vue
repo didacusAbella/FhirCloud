@@ -99,7 +99,7 @@
 </template>
 
 <script>
-const base_url = 'http://localhost:4000/fhir'
+const base_url = 'http://localhost:4000/fhirserver-5.0.0/fhir'
 
 function loadEncounter(id) {
     return fetch(`${base_url}/Encounter/${id}?_format=json`).then(response => response.json())

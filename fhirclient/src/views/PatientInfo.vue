@@ -77,7 +77,7 @@
 </template>
 
 <script>
-const base_url = "http://localhost:4000/fhir"
+const base_url = "http://localhost:4000/fhirserver-5.0.0/fhir"
 
 function loadPatient(identifier) {
     return fetch(`${base_url}/Patient/${identifier}?_format=json`)

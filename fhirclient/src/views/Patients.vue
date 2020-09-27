@@ -25,7 +25,7 @@ export default {
      }
     },
     mounted(){
-        fetch('http://localhost:4000/fhir/Patient?_format=json')
+      fetch('http://localhost:4000/fhirserver-5.0.0/fhir/Patient?_format=json')
         .then(response => response.json())
         .then(objects => objects.entry)
         .then(list => list.map(el => el.resource))
