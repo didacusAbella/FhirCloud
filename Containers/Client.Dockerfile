@@ -1,9 +1,9 @@
 FROM node:latest
-RUN yard add global http-server
+RUN npm install -g http-server
 WORKDIR /webapp
-COPY ../fhirclient/package*.json ./
-RUN yarn install
-COPY ../fhirclient ./
-RUN yarn build
+COPY ./fhirclient/package*.json ./
+RUN npm install
+COPY ./fhirclient ./
+RUN npm run build
 EXPOSE 8080
 CMD ["http-server", "dist"]

@@ -1,14 +1,20 @@
 version: '3.0'
 services:
   web:
-    build: ./Containers/Client.Dockerfile
+    build:
+      context: .
+      dockerfile: ./Containers/Client.Dockerfile
     ports:
       - "8080:8080"
   server:
-    build: ./Containers/Server.Dockerfile
+    build:
+      context: .
+      dockerfile: ./Containers/Server.Dockerfile
     ports:
       - "4000:4000"
   database:
-    build: ./Containers/Database.Dockerfile
+    build:
+      context: .
+      dockerfile: ./Containers/Database.Dockerfile
     ports:
       - "1433:1433"
