@@ -43,7 +43,7 @@ public class PatientProvider extends RestfulProvider<Patient> {
 
     @Override
     public List<Patient> getAll() throws SQLException {
-        List<Patient> patients = new JdbcSession(ds).sql("SELECT TOP 10 * FROM [dbo].[patients]")
+        List<Patient> patients = new JdbcSession(ds).sql("SELECT TOP 100 * FROM [dbo].[patients]")
                 .select(new Outcome<List<Patient>>() {
             @Override
             public List<Patient> handle(ResultSet rs, Statement stmnt) throws SQLException {

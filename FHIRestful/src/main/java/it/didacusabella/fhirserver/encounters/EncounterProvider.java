@@ -42,7 +42,7 @@ public class EncounterProvider extends RestfulProvider<Encounter> {
     @Override
     public List<Encounter> getAll() throws SQLException {
         List<Encounter> encounters = new JdbcSession(ds)
-                .sql("SELECT TOP 10 * FROM [dbo].[encounters]")
+                .sql("SELECT TOP 100 * FROM [dbo].[encounters]")
                 .select(new Outcome<List<Encounter>>() {
             @Override
             public List<Encounter> handle(ResultSet rs, Statement stmnt) throws SQLException {
