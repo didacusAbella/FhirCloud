@@ -19,6 +19,10 @@ import org.hl7.fhir.r4.model.Patient;
  */
 public class PatientProvider extends RestfulProvider<Patient> {
 
+    private static final String FETCH_ALL = "SELECT DISTINCT p.* FROM [dbo].[patients] p," +
+        "[dbo].[imagingstudies] i, [dbo].[imagingdetails] id " +
+        "WHERE p.Id = i.patient AND i.Id = id.imaging";
+
     public PatientProvider(DataSource ds) {
         super(ds);
     }
@@ -43,7 +47,7 @@ public class PatientProvider extends RestfulProvider<Patient> {
 
     @Override
     public List<Patient> getAll() throws SQLException {
-        List<Patient> patients = new JdbcSession(ds).sql("SELECT TOP 100 * FROM [dbo].[patients]")
+        List<Patient> patients = new JdbcSession(ds).sql(FETCH_ALL)
                 .select(new Outcome<List<Patient>>() {
             @Override
             public List<Patient> handle(ResultSet rs, Statement stmnt) throws SQLException {

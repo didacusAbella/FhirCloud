@@ -23,3 +23,18 @@ services:
       - "1433:1433"
     volumes:
       - ./backup:/tmp
+  cluster:
+    container_name: fhircluster
+    build:
+      context: .
+      dockerfile: ./Containers/Spark.Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebook:/home/jovyan/work
+  blob:
+    container_name: fhirblob
+    image: mcr.microsoft.com/azure-storage/azurite
+    ports:
+      - "10001:10001"
+      - "10000:10000"
